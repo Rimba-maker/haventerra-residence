@@ -1,0 +1,1815 @@
+---
+// Haventerra Residence — Landing Page
+// Design: Airbnb compositional DNA × Forest Sage palette × DM Serif Display hero
+---
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haventerra Residence — Perumahan Premium Tangerang Selatan</title>
+  <meta name="description" content="Hunian premium 250 unit dalam 12 hektar lahan hijau di Tangerang Selatan. 15 menit dari MRT, fasilitas lengkap, KPR 9 bank partner. Mulai Rp 850 jt." />
+  <meta property="og:title" content="Haventerra Residence — Rumah Impian, Tempat Cerita Bermula" />
+  <meta property="og:description" content="Hunian premium eco-living di Tangerang Selatan. 250 unit, 12 hektar lahan hijau." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style is:global>
+    /* ─── HAVENTERRA DESIGN TOKENS ───────────────────────────────────────────
+       DNA: Airbnb (photo-first, trust signals, soft rounding, white canvas)
+       Adaptation: Forest Sage primary, warm cream alternates, DM Serif hero
+    ──────────────────────────────────────────────────────────────────────── */
+    :root {
+      --color-primary:        #3d6b52;
+      --color-primary-hover:  #2d5340;
+      --color-primary-light:  #d4e8db;
+      --color-accent:         #c8763a;
+      --color-accent-light:   #fdf0e6;
+      --color-canvas:         #ffffff;
+      --color-warm-cream:     #faf8f4;
+      --color-surface-soft:   #f2efe9;
+      --color-ink:            #1a1a1a;
+      --color-body:           #3d3d3d;
+      --color-muted:          #6a6a6a;
+      --color-hairline:       #e0dbd4;
+      --color-dark-band:      #1e3428;
+
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body:    'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+
+      --rounded-xs:   4px;
+      --rounded-sm:   8px;
+      --rounded-md:   14px;
+      --rounded-lg:   20px;
+      --rounded-xl:   32px;
+      --rounded-full: 9999px;
+
+      --shadow-card:       rgba(0,0,0,0.02) 0 0 0 1px, rgba(0,0,0,0.04) 0 2px 8px, rgba(0,0,0,0.06) 0 4px 16px;
+      --shadow-card-hover: rgba(0,0,0,0.02) 0 0 0 1px, rgba(0,0,0,0.08) 0 6px 20px, rgba(0,0,0,0.10) 0 12px 32px;
+
+      --section-py:     88px;
+      --container-max:  1280px;
+      --container-px:   80px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--color-canvas);
+      color: var(--color-body);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding-left: var(--container-px);
+      padding-right: var(--container-px);
+    }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 26px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.2;
+      border-radius: var(--rounded-sm);
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn--primary  { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+    .btn--primary:hover { background: var(--color-primary-hover); border-color: var(--color-primary-hover); }
+    .btn--white    { background: #fff; color: var(--color-ink); }
+    .btn--white:hover { background: var(--color-surface-soft); }
+    .btn--outline  { background: transparent; color: var(--color-ink); border-color: var(--color-ink); }
+    .btn--outline:hover { background: var(--color-ink); color: #fff; }
+    .btn--outline-primary { background: transparent; color: var(--color-primary); border-color: var(--color-primary); }
+    .btn--outline-primary:hover { background: var(--color-primary); color: #fff; }
+    .btn--ghost-white {
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+      border-color: rgba(255,255,255,0.45);
+      backdrop-filter: blur(6px);
+    }
+    .btn--ghost-white:hover { background: rgba(255,255,255,0.24); }
+    .btn--lg  { padding: 16px 34px; font-size: 16px; }
+    .btn--pill { border-radius: var(--rounded-full); }
+    .btn--full { width: 100%; justify-content: center; }
+
+    /* ─── SECTION LABEL ─── */
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 12px;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       01 — NAVBAR
+    ══════════════════════════════════════════════════════════════ */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-canvas);
+      border-bottom: 1px solid var(--color-hairline);
+      height: 72px;
+      display: flex;
+      align-items: center;
+    }
+    .navbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .navbar__logo { display: flex; flex-direction: column; line-height: 1; }
+    .logo-name {
+      font-family: var(--font-display);
+      font-size: 21px;
+      color: var(--color-ink);
+      letter-spacing: -0.3px;
+    }
+    .logo-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-top: 2px;
+    }
+    .navbar__links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .navbar__links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-body);
+      transition: color 0.15s ease;
+    }
+    .navbar__links a:hover { color: var(--color-ink); }
+
+    /* ══════════════════════════════════════════════════════════════
+       02 — HERO
+    ══════════════════════════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 620px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero__bg { position: absolute; inset: 0; }
+    .hero__bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 65%; }
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(8, 18, 12, 0.88) 0%,
+        rgba(8, 18, 12, 0.35) 55%,
+        rgba(8, 18, 12, 0.08) 100%
+      );
+    }
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      padding-bottom: 80px;
+      width: 100%;
+    }
+    .hero__eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 18px;
+    }
+    .hero__headline {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 5.5vw, 68px);
+      font-weight: 400;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 22px;
+      letter-spacing: -0.5px;
+      max-width: 680px;
+    }
+    .hero__headline em { font-style: italic; opacity: 0.92; }
+    .hero__sub {
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.78);
+      max-width: 520px;
+      margin-bottom: 36px;
+    }
+    .hero__ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 52px;
+    }
+    .hero__badges { display: flex; gap: 10px; flex-wrap: wrap; }
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      background: rgba(255,255,255,0.11);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: var(--rounded-full);
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.88);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       03 — ABOUT
+    ══════════════════════════════════════════════════════════════ */
+    .about {
+      background: var(--color-warm-cream);
+      padding: var(--section-py) 0;
+    }
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about__photo {
+      border-radius: var(--rounded-lg);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .about__photo img { width: 100%; height: 100%; object-fit: cover; }
+    .about__text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 3.2vw, 44px);
+      font-weight: 400;
+      color: var(--color-ink);
+      line-height: 1.18;
+      margin-bottom: 20px;
+    }
+    .about__text p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--color-body);
+      margin-bottom: 16px;
+    }
+    .about__text p:last-of-type { margin-bottom: 32px; }
+    .about__pills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .about__pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: #fff;
+      border: 1px solid var(--color-hairline);
+      border-radius: var(--rounded-full);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-ink);
+      box-shadow: var(--shadow-card);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       04 — TYPES (Airbnb property-card pattern)
+    ══════════════════════════════════════════════════════════════ */
+    .types { background: var(--color-canvas); padding: var(--section-py) 0; }
+    .section-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 400;
+      color: var(--color-ink);
+      margin-bottom: 10px;
+    }
+    .section-header p { font-size: 16px; color: var(--color-muted); }
+    .types__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .type-card {
+      background: var(--color-canvas);
+      border-radius: var(--rounded-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+    }
+    .type-card:hover {
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-7px);
+    }
+    .type-card__photo {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+    }
+    .type-card__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .type-card:hover .type-card__photo img { transform: scale(1.05); }
+    .type-card__badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 5px 11px;
+      background: var(--color-accent);
+      color: #fff;
+      border-radius: var(--rounded-full);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .type-card__save {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      background: rgba(255,255,255,0.88);
+      border-radius: var(--rounded-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .type-card__save:hover { transform: scale(1.12); background: #fff; }
+    .type-card__meta { padding: 16px; }
+    .type-card__name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-ink);
+      margin-bottom: 5px;
+    }
+    .type-card__specs {
+      font-size: 13px;
+      color: var(--color-muted);
+      line-height: 1.55;
+      margin-bottom: 10px;
+    }
+    .type-card__price {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-ink);
+    }
+    .type-card__price-note { font-size: 12px; font-weight: 400; color: var(--color-muted); }
+    .type-card__units {
+      font-size: 12px;
+      color: var(--color-primary);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       05 — MASTER PLAN
+    ══════════════════════════════════════════════════════════════ */
+    .masterplan { background: var(--color-warm-cream); padding: var(--section-py) 0; }
+    .masterplan__visual {
+      position: relative;
+      border-radius: var(--rounded-lg);
+      overflow: hidden;
+      aspect-ratio: 16/7;
+      margin-top: 0;
+    }
+    .masterplan__visual img { width: 100%; height: 100%; object-fit: cover; }
+    .masterplan__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,18,12,0.5) 0%, transparent 60%);
+    }
+    .masterplan__legend {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 13px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(6px);
+      border-radius: var(--rounded-full);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-ink);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       06 — FACILITIES
+    ══════════════════════════════════════════════════════════════ */
+    .facilities { background: var(--color-canvas); padding: var(--section-py) 0; }
+    .facilities__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .facility-card {
+      background: var(--color-canvas);
+      border-radius: var(--rounded-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .facility-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card-hover); }
+    .facility-card__photo { aspect-ratio: 16/9; overflow: hidden; }
+    .facility-card__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+    .facility-card:hover .facility-card__photo img { transform: scale(1.05); }
+    .facility-card__meta { padding: 20px; }
+    .facility-card__icon { font-size: 26px; margin-bottom: 10px; }
+    .facility-card__title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-ink);
+      margin-bottom: 6px;
+    }
+    .facility-card__desc { font-size: 14px; color: var(--color-muted); line-height: 1.55; }
+
+    /* ══════════════════════════════════════════════════════════════
+       07 — LOCATION
+    ══════════════════════════════════════════════════════════════ */
+    .location { background: var(--color-warm-cream); padding: var(--section-py) 0; }
+    .location__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .location__text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 400;
+      color: var(--color-ink);
+      margin-bottom: 12px;
+    }
+    .location__text > p {
+      font-size: 16px;
+      color: var(--color-muted);
+      margin-bottom: 32px;
+      line-height: 1.65;
+    }
+    .location__landmarks { display: flex; flex-direction: column; gap: 8px; }
+    .location__landmark {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 16px;
+      background: #fff;
+      border-radius: var(--rounded-sm);
+      border: 1px solid var(--color-hairline);
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .location__landmark:hover {
+      border-color: var(--color-primary-light);
+      background: rgba(212,232,219,0.25);
+    }
+    .location__landmark-icon { font-size: 18px; flex-shrink: 0; }
+    .location__landmark-name { font-size: 14px; font-weight: 500; color: var(--color-ink); flex: 1; }
+    .location__landmark-dist {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-primary);
+      flex-shrink: 0;
+    }
+    .location__map {
+      border-radius: var(--rounded-lg);
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      position: relative;
+    }
+    .location__map img { width: 100%; height: 100%; object-fit: cover; }
+    .location__map-pin {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--color-primary);
+      color: #fff;
+      padding: 9px 18px;
+      border-radius: var(--rounded-full);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(61,107,82,0.45);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       08 — GALLERY
+    ══════════════════════════════════════════════════════════════ */
+    .gallery { background: var(--color-canvas); padding: var(--section-py) 0; }
+    .gallery__tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .gallery__tab {
+      padding: 8px 20px;
+      border-radius: var(--rounded-full);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1.5px solid var(--color-hairline);
+      background: #fff;
+      color: var(--color-body);
+      transition: all 0.15s ease;
+    }
+    .gallery__tab.active,
+    .gallery__tab:hover {
+      background: var(--color-ink);
+      color: #fff;
+      border-color: var(--color-ink);
+    }
+    .gallery__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 260px;
+      gap: 12px;
+    }
+    .gallery__item {
+      border-radius: var(--rounded-sm);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .gallery__item:hover img { transform: scale(1.05); }
+    .gallery__item--tall { grid-row: span 2; }
+    .gallery__caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 14px;
+      background: linear-gradient(to top, rgba(0,0,0,0.72), transparent);
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.92);
+      opacity: 0;
+      transition: opacity 0.22s ease;
+    }
+    .gallery__item:hover .gallery__caption { opacity: 1; }
+
+    /* ══════════════════════════════════════════════════════════════
+       09 — PRICING
+    ══════════════════════════════════════════════════════════════ */
+    .pricing { background: var(--color-warm-cream); padding: var(--section-py) 0; }
+    .pricing__promo-banner {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 44px;
+    }
+    .pricing__promo {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      background: var(--color-accent-light);
+      border: 1.5px solid var(--color-accent);
+      border-radius: var(--rounded-full);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-accent);
+    }
+    .pricing__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+    .pricing-card {
+      padding: 28px;
+      border: 1.5px solid var(--color-hairline);
+      border-radius: var(--rounded-md);
+      background: var(--color-canvas);
+    }
+    .pricing-card--featured {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 1px var(--color-primary), var(--shadow-card);
+      transform: scale(1.025);
+    }
+    .pricing-card__icon { font-size: 32px; margin-bottom: 16px; }
+    .pricing-card__label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+    }
+    .pricing-card__title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-ink);
+      margin-bottom: 20px;
+    }
+    .pricing-card__items {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      margin-bottom: 26px;
+    }
+    .pricing-card__items li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-size: 14px;
+      color: var(--color-body);
+      line-height: 1.45;
+    }
+    .pricing-card__items li::before {
+      content: '✓';
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       10 — DEVELOPER
+    ══════════════════════════════════════════════════════════════ */
+    .developer { background: var(--color-dark-band); padding: var(--section-py) 0; }
+    .developer__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .developer__text .section-label { color: rgba(255,255,255,0.5); }
+    .developer__text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 18px;
+      line-height: 1.18;
+    }
+    .developer__text p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.68);
+      margin-bottom: 28px;
+    }
+    .developer__certs { display: flex; gap: 10px; flex-wrap: wrap; }
+    .developer__cert {
+      padding: 7px 15px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: var(--rounded-full);
+      font-size: 13px;
+      color: rgba(255,255,255,0.78);
+      font-weight: 500;
+    }
+    .developer__stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 48px;
+    }
+    .developer__stat-num {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .developer__stat-label { font-size: 14px; color: rgba(255,255,255,0.55); font-weight: 500; }
+
+    /* ══════════════════════════════════════════════════════════════
+       11 — TESTIMONIALS
+    ══════════════════════════════════════════════════════════════ */
+    .testimonials { background: var(--color-canvas); padding: var(--section-py) 0; }
+    .testimonials__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .testimonial-card {
+      padding: 28px;
+      border: 1px solid var(--color-hairline);
+      border-radius: var(--rounded-md);
+      background: var(--color-canvas);
+      transition: box-shadow 0.25s ease;
+    }
+    .testimonial-card:hover { box-shadow: var(--shadow-card-hover); }
+    .testimonial-card__quote {
+      font-family: var(--font-display);
+      font-size: 40px;
+      line-height: 1;
+      color: var(--color-primary-light);
+      margin-bottom: 12px;
+    }
+    .testimonial-card__text {
+      font-size: 15px;
+      line-height: 1.72;
+      color: var(--color-body);
+      margin-bottom: 22px;
+    }
+    .testimonial-card__author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-card__avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--rounded-full);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .testimonial-card__avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .testimonial-card__name { font-size: 14px; font-weight: 700; color: var(--color-ink); }
+    .testimonial-card__role { font-size: 13px; color: var(--color-muted); margin-top: 1px; }
+    .testimonial-card__stars { font-size: 12px; color: var(--color-ink); margin-top: 3px; }
+
+    /* ══════════════════════════════════════════════════════════════
+       12 — FAQ
+    ══════════════════════════════════════════════════════════════ */
+    .faq { background: var(--color-warm-cream); padding: var(--section-py) 0; }
+    .faq__inner { max-width: 740px; margin: 0 auto; }
+    .faq__items { border-top: 1px solid var(--color-hairline); }
+    .faq__item { border-bottom: 1px solid var(--color-hairline); }
+    .faq__question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      cursor: pointer;
+      gap: 16px;
+      user-select: none;
+    }
+    .faq__question-text { font-size: 16px; font-weight: 600; color: var(--color-ink); }
+    .faq__chevron {
+      font-size: 20px;
+      color: var(--color-muted);
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
+      line-height: 1;
+    }
+    .faq__answer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease;
+    }
+    .faq__answer-inner { overflow: hidden; }
+    .faq__answer p {
+      font-size: 15px;
+      line-height: 1.72;
+      color: var(--color-body);
+      padding-bottom: 20px;
+    }
+    .faq__item.open .faq__chevron { transform: rotate(180deg); }
+    .faq__item.open .faq__answer { grid-template-rows: 1fr; }
+
+    /* ══════════════════════════════════════════════════════════════
+       13 — BOOKING CTA
+    ══════════════════════════════════════════════════════════════ */
+    .booking { background: var(--color-primary); padding: var(--section-py) 0; }
+    .booking__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .booking__text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 3.2vw, 46px);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+    .booking__text p {
+      font-size: 16px;
+      line-height: 1.72;
+      color: rgba(255,255,255,0.78);
+    }
+    .booking__form {
+      background: #fff;
+      border-radius: var(--rounded-lg);
+      padding: 36px;
+    }
+    .booking__form-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-ink);
+      margin-bottom: 24px;
+    }
+    .form__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form__group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .form__group label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-ink);
+      letter-spacing: 0.02em;
+    }
+    .form__group input,
+    .form__group select {
+      padding: 12px 14px;
+      border: 1.5px solid var(--color-hairline);
+      border-radius: var(--rounded-sm);
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--color-ink);
+      background: var(--color-canvas);
+      transition: border-color 0.15s ease;
+      outline: none;
+      appearance: none;
+    }
+    .form__group input:focus,
+    .form__group select:focus { border-color: var(--color-primary); }
+    .form__group input::placeholder { color: var(--color-muted); }
+
+    /* ══════════════════════════════════════════════════════════════
+       14 — FOOTER
+    ══════════════════════════════════════════════════════════════ */
+    .footer { background: var(--color-warm-cream); padding: 60px 0 0; }
+    .footer__top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--color-hairline);
+    }
+    .footer__brand-desc {
+      font-size: 14px;
+      color: var(--color-muted);
+      line-height: 1.65;
+      margin-top: 14px;
+      margin-bottom: 22px;
+    }
+    .footer__address {
+      font-size: 13px;
+      color: var(--color-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .footer__socials { display: flex; gap: 10px; }
+    .footer__social {
+      width: 36px;
+      height: 36px;
+      background: var(--color-surface-soft);
+      border-radius: var(--rounded-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      transition: background 0.15s ease;
+    }
+    .footer__social:hover { background: var(--color-primary-light); }
+    .footer__col-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-ink);
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+    .footer__col-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer__col-links a {
+      font-size: 14px;
+      color: var(--color-muted);
+      transition: color 0.15s ease;
+    }
+    .footer__col-links a:hover { color: var(--color-ink); }
+    .footer__bottom {
+      padding: 22px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .footer__legal { font-size: 13px; color: var(--color-muted); }
+    .footer__tagline {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-style: italic;
+      color: var(--color-muted);
+    }
+
+    /* ──────────────────────────────────────────────────────────────
+       RESPONSIVE
+    ────────────────────────────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      :root { --container-px: 48px; }
+      .types__grid { grid-template-columns: repeat(2, 1fr); }
+      .footer__top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --container-px: 24px; --section-py: 60px; }
+      .navbar__links { display: none; }
+      .about__grid { grid-template-columns: 1fr; gap: 36px; }
+      .about__photo { aspect-ratio: 16/9; }
+      .types__grid { grid-template-columns: 1fr; }
+      .masterplan__visual { aspect-ratio: 4/3; }
+      .facilities__grid { grid-template-columns: 1fr; }
+      .location__grid { grid-template-columns: 1fr; gap: 40px; }
+      .gallery__grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 200px;
+      }
+      .gallery__item--tall { grid-row: auto; }
+      .pricing__grid { grid-template-columns: 1fr; }
+      .pricing-card--featured { transform: none; }
+      .developer__inner { grid-template-columns: 1fr; gap: 48px; }
+      .testimonials__grid { grid-template-columns: 1fr; }
+      .booking__inner { grid-template-columns: 1fr; gap: 40px; }
+      .form__row { grid-template-columns: 1fr; }
+      .footer__top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════ 01 NAVBAR ══════ -->
+  <nav class="navbar">
+    <div class="container navbar__inner">
+      <a href="/" class="navbar__logo">
+        <span class="logo-name">Haventerra</span>
+        <span class="logo-tag">Residence</span>
+      </a>
+      <ul class="navbar__links">
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#tipe">Tipe Rumah</a></li>
+        <li><a href="#masterplan">Master Plan</a></li>
+        <li><a href="#lokasi">Lokasi</a></li>
+        <li><a href="#harga">Harga</a></li>
+      </ul>
+      <a href="#booking" class="btn btn--primary btn--pill">Konsultasi Gratis</a>
+    </div>
+  </nav>
+
+  <!-- ══════ 02 HERO ══════ -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <img
+        src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1920&q=80"
+        alt="Kawasan perumahan modern Haventerra Residence dari udara"
+        fetchpriority="high"
+      />
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <div class="container">
+        <p class="hero__eyebrow">Tangerang Selatan · Eco-Living Community</p>
+        <h1 class="hero__headline">
+          Rumah Yang Tumbuh<br /><em>Bersama Keluargamu.</em>
+        </h1>
+        <p class="hero__sub">
+          Hunian premium dengan konsep eco-living di kawasan strategis Tangerang Selatan.
+          250 unit dalam 12 hektar lahan hijau, hanya 15 menit dari Stasiun Rawa Buntu.
+        </p>
+        <div class="hero__ctas">
+          <a href="#tipe" class="btn btn--white btn--lg">Lihat Tipe Rumah</a>
+          <a href="#booking" class="btn btn--ghost-white btn--lg">Survey Lokasi</a>
+        </div>
+        <div class="hero__badges">
+          <span class="hero__badge">🏅 Sertifikat HGB</span>
+          <span class="hero__badge">⭐ 12 Tahun Track Record</span>
+          <span class="hero__badge">🏦 KPR 9 Bank Partner</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ 03 ABOUT ══════ -->
+  <section class="about" id="tentang">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__photo">
+          <img
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80"
+            alt="Eksterior modern Haventerra Residence"
+          />
+        </div>
+        <div class="about__text">
+          <span class="section-label">Tentang Kami</span>
+          <h2>Lebih Dari Sekadar Rumah</h2>
+          <p>
+            Haventerra Residence lahir dari visi sederhana — menciptakan komunitas tempat keluarga
+            bisa tumbuh dengan tenang. Setiap unit dirancang dengan natural lighting maksimal,
+            ventilasi silang, dan dikelilingi 30% ruang hijau.
+          </p>
+          <p>
+            Kami percaya, rumah yang baik adalah investasi untuk masa depan keluarga, bukan sekadar
+            bangunan. Di sinilah cerita terbaik hidupmu dimulai.
+          </p>
+          <div class="about__pills">
+            <span class="about__pill">🌳 30% Open Green Space</span>
+            <span class="about__pill">🏘️ 250 Unit Eksklusif</span>
+            <span class="about__pill">🚉 15 Menit ke MRT</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ 04 TYPE / CLUSTER ══════ -->
+  <section class="types" id="tipe">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Tipe Rumah</span>
+        <h2>Pilih Tipe Yang Cocok</h2>
+        <p>4 tipe rumah, semua dengan kualitas konstruksi &amp; finishing yang sama.</p>
+      </div>
+      <div class="types__grid">
+
+        <!-- Anggrek -->
+        <div class="type-card">
+          <div class="type-card__photo">
+            <img
+              src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=600&q=80"
+              alt="Type Anggrek — rumah minimalis 2 kamar"
+            />
+            <span class="type-card__save">🤍</span>
+          </div>
+          <div class="type-card__meta">
+            <div class="type-card__name">Type Anggrek</div>
+            <div class="type-card__specs">60 m² tanah · 36 m² bangunan<br />2 KT · 1 KM · Carport 1 mobil</div>
+            <div class="type-card__price">Rp 850 jt <span class="type-card__price-note">/ unit</span></div>
+            <div class="type-card__units">✓ 105 unit tersedia</div>
+          </div>
+        </div>
+
+        <!-- Melati (Best Seller) -->
+        <div class="type-card">
+          <div class="type-card__photo">
+            <img
+              src="https://images.unsplash.com/photo-1576941089067-2de3c901e126?auto=format&fit=crop&w=600&q=80"
+              alt="Type Melati — best seller 2 kamar + study"
+            />
+            <span class="type-card__badge">⭐ Best Seller</span>
+            <span class="type-card__save">🤍</span>
+          </div>
+          <div class="type-card__meta">
+            <div class="type-card__name">Type Melati</div>
+            <div class="type-card__specs">72 m² tanah · 45 m² bangunan<br />2 KT + study · 2 KM · Carport 1 mobil</div>
+            <div class="type-card__price">Rp 1,2 M <span class="type-card__price-note">/ unit</span></div>
+            <div class="type-card__units">✓ 80 unit tersedia</div>
+          </div>
+        </div>
+
+        <!-- Cempaka -->
+        <div class="type-card">
+          <div class="type-card__photo">
+            <img
+              src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=600&q=80"
+              alt="Type Cempaka — 3 kamar dengan ruang kerja"
+            />
+            <span class="type-card__save">🤍</span>
+          </div>
+          <div class="type-card__meta">
+            <div class="type-card__name">Type Cempaka</div>
+            <div class="type-card__specs">90 m² tanah · 60 m² bangunan<br />3 KT · 2 KM · Ruang kerja · Carport 2 mobil</div>
+            <div class="type-card__price">Rp 1,6 M <span class="type-card__price-note">/ unit</span></div>
+            <div class="type-card__units">✓ 45 unit tersedia</div>
+          </div>
+        </div>
+
+        <!-- Anyelir -->
+        <div class="type-card">
+          <div class="type-card__photo">
+            <img
+              src="https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?auto=format&fit=crop&w=600&q=80"
+              alt="Type Anyelir — semi luxury dengan master suite"
+            />
+            <span class="type-card__save">🤍</span>
+          </div>
+          <div class="type-card__meta">
+            <div class="type-card__name">Type Anyelir</div>
+            <div class="type-card__specs">120 m² tanah · 90 m² bangunan<br />3 KT + master suite · 3 KM · Taman belakang</div>
+            <div class="type-card__price">Rp 2,5 M <span class="type-card__price-note">/ unit</span></div>
+            <div class="type-card__units">✓ 20 unit tersedia</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ 05 MASTER PLAN ══════ -->
+  <section class="masterplan" id="masterplan">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Site Plan</span>
+        <h2>Master Plan Kawasan</h2>
+        <p>Zoning yang jelas — tidak ada satu rumah pun yang berbatasan langsung dengan jalan utama.</p>
+      </div>
+      <div class="masterplan__visual">
+        <img
+          src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1600&q=80"
+          alt="Master plan kawasan Haventerra Residence Tangerang Selatan"
+        />
+        <div class="masterplan__overlay"></div>
+        <div class="masterplan__legend">
+          <span class="legend-item">🏠 Hunian</span>
+          <span class="legend-item">🌳 Ruang Hijau 30%</span>
+          <span class="legend-item">🏊 Clubhouse & Pool</span>
+          <span class="legend-item">🎮 Children Park</span>
+          <span class="legend-item">🛒 Area Komersial</span>
+          <span class="legend-item">🛡️ Security Post</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ 06 FACILITIES ══════ -->
+  <section class="facilities" id="fasilitas">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Fasilitas</span>
+        <h2>Fasilitas Yang Bikin Betah</h2>
+        <p>Semua yang kamu butuhkan, ada di dalam kawasan.</p>
+      </div>
+      <div class="facilities__grid">
+
+        <div class="facility-card">
+          <div class="facility-card__photo">
+            <img
+              src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=700&q=80"
+              alt="Olympic size swimming pool"
+            />
+          </div>
+          <div class="facility-card__meta">
+            <div class="facility-card__icon">🏊</div>
+            <div class="facility-card__title">Olympic-Size Pool</div>
+            <div class="facility-card__desc">Untuk dewasa &amp; anak-anak, lengkap dengan kabana dan area berjemur yang nyaman.</div>
+          </div>
+        </div>
+
+        <div class="facility-card">
+          <div class="facility-card__photo">
+            <img
+              src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=700&q=80"
+              alt="Jogging track dengan view hijau"
+            />
+          </div>
+          <div class="facility-card__meta">
+            <div class="facility-card__icon">🏃</div>
+            <div class="facility-card__title">1,2 KM Jogging Track</div>
+            <div class="facility-card__desc">Mengelilingi seluruh kawasan dengan view rindang yang menyegarkan di setiap pagi.</div>
+          </div>
+        </div>
+
+        <div class="facility-card">
+          <div class="facility-card__photo">
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=700&q=80"
+              alt="Clubhouse modern dengan gym dan co-working space"
+            />
+          </div>
+          <div class="facility-card__meta">
+            <div class="facility-card__icon">🏛️</div>
+            <div class="facility-card__title">Clubhouse Modern</div>
+            <div class="facility-card__desc">Gym, ruang serbaguna, dan co-working space. Produktif tanpa harus keluar kawasan.</div>
+          </div>
+        </div>
+
+        <div class="facility-card">
+          <div class="facility-card__photo">
+            <img
+              src="https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?auto=format&fit=crop&w=700&q=80"
+              alt="Children playground dengan 3 zona bermain"
+            />
+          </div>
+          <div class="facility-card__meta">
+            <div class="facility-card__icon">🎮</div>
+            <div class="facility-card__title">Children Playground</div>
+            <div class="facility-card__desc">3 zona berbeda untuk toddler, kids, dan teens. Aman, seru, dan desain yang menstimulasi.</div>
+          </div>
+        </div>
+
+        <div class="facility-card">
+          <div class="facility-card__photo">
+            <img
+              src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=700&q=80"
+              alt="Commercial area dengan minimarket dan cafe"
+            />
+          </div>
+          <div class="facility-card__meta">
+            <div class="facility-card__icon">🛒</div>
+            <div class="facility-card__title">Commercial Area</div>
+            <div class="facility-card__desc">Minimarket, cafe, laundry, dan klinik — semua kebutuhan sehari-hari dalam satu kawasan.</div>
+          </div>
+        </div>
+
+        <div class="facility-card">
+          <div class="facility-card__photo">
+            <img
+              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80"
+              alt="Sistem keamanan one-gate dengan RFID"
+            />
+          </div>
+          <div class="facility-card__meta">
+            <div class="facility-card__icon">🛡️</div>
+            <div class="facility-card__title">24/7 Security &amp; CCTV</div>
+            <div class="facility-card__desc">One-gate system dengan akses RFID dan monitoring CCTV yang aktif sepanjang hari.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ 07 LOCATION ══════ -->
+  <section class="location" id="lokasi">
+    <div class="container">
+      <div class="location__grid">
+
+        <div class="location__text">
+          <span class="section-label">Lokasi</span>
+          <h2>Strategis,<br />Akses Mudah</h2>
+          <p>Berada di jantung Tangerang Selatan, Haventerra menghubungkan kamu ke seluruh penjuru kota dengan mudah.</p>
+          <div class="location__landmarks">
+            <div class="location__landmark">
+              <span class="location__landmark-icon">🚉</span>
+              <span class="location__landmark-name">Stasiun Rawa Buntu (KRL)</span>
+              <span class="location__landmark-dist">5 menit</span>
+            </div>
+            <div class="location__landmark">
+              <span class="location__landmark-icon">🛣️</span>
+              <span class="location__landmark-name">Tol Serpong–Pondok Aren</span>
+              <span class="location__landmark-dist">8 menit</span>
+            </div>
+            <div class="location__landmark">
+              <span class="location__landmark-icon">🏫</span>
+              <span class="location__landmark-name">Sekolah BSD &amp; Ora et Labora</span>
+              <span class="location__landmark-dist">10 menit</span>
+            </div>
+            <div class="location__landmark">
+              <span class="location__landmark-icon">🏥</span>
+              <span class="location__landmark-name">RS Eka Hospital BSD</span>
+              <span class="location__landmark-dist">12 menit</span>
+            </div>
+            <div class="location__landmark">
+              <span class="location__landmark-icon">🛍️</span>
+              <span class="location__landmark-name">AEON Mall &amp; ICE BSD</span>
+              <span class="location__landmark-dist">15 menit</span>
+            </div>
+            <div class="location__landmark">
+              <span class="location__landmark-icon">🛫</span>
+              <span class="location__landmark-name">Bandara Soekarno-Hatta</span>
+              <span class="location__landmark-dist">35 menit</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="location__map">
+          <img
+            src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80"
+            alt="Peta lokasi Haventerra Residence Tangerang Selatan"
+          />
+          <div class="location__map-pin">📍 Haventerra Residence</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ 08 GALLERY ══════ -->
+  <section class="gallery" id="galeri">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Show Unit</span>
+        <h2>Lihat Detail Setiap Sudut</h2>
+        <p>Kunjungi show unit kami atau jelajahi foto-foto di bawah ini.</p>
+      </div>
+      <div class="gallery__tabs">
+        <button class="gallery__tab active" data-filter="all">Semua</button>
+        <button class="gallery__tab" data-filter="eksterior">Eksterior</button>
+        <button class="gallery__tab" data-filter="living">Living Room</button>
+        <button class="gallery__tab" data-filter="dapur">Dapur</button>
+        <button class="gallery__tab" data-filter="kamar">Kamar Tidur</button>
+        <button class="gallery__tab" data-filter="taman">Taman</button>
+      </div>
+      <div class="gallery__grid">
+        <div class="gallery__item" data-cat="living">
+          <img
+            src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=700&q=80"
+            alt="Living room show unit Type Melati"
+          />
+          <div class="gallery__caption">Type Melati — Living Room</div>
+        </div>
+        <div class="gallery__item" data-cat="dapur">
+          <img
+            src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=700&q=80"
+            alt="Dapur modern Type Cempaka"
+          />
+          <div class="gallery__caption">Type Cempaka — Dapur</div>
+        </div>
+        <div class="gallery__item gallery__item--tall" data-cat="eksterior">
+          <img
+            src="https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?auto=format&fit=crop&w=700&q=80"
+            alt="Eksterior Type Anyelir"
+          />
+          <div class="gallery__caption">Type Anyelir — Eksterior</div>
+        </div>
+        <div class="gallery__item" data-cat="kamar">
+          <img
+            src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=700&q=80"
+            alt="Master bedroom Type Anyelir"
+          />
+          <div class="gallery__caption">Type Anyelir — Master Bedroom</div>
+        </div>
+        <div class="gallery__item" data-cat="taman">
+          <img
+            src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=700&q=80"
+            alt="Taman belakang Type Anyelir"
+          />
+          <div class="gallery__caption">Type Anyelir — Taman Belakang</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ 09 PRICING ══════ -->
+  <section class="pricing" id="harga">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Pembayaran</span>
+        <h2>Skema Pembayaran Fleksibel</h2>
+        <p>Pilih skema yang paling sesuai dengan kondisi keuanganmu.</p>
+      </div>
+      <div class="pricing__promo-banner">
+        <div class="pricing__promo">
+          🎉 Promo Grand Opening: Free BPHTB &amp; AJB sampai 31 Desember 2026!
+        </div>
+      </div>
+      <div class="pricing__grid">
+
+        <!-- Cash Keras -->
+        <div class="pricing-card">
+          <div class="pricing-card__icon">💰</div>
+          <div class="pricing-card__label">Hemat Terbanyak</div>
+          <div class="pricing-card__title">Cash Keras</div>
+          <ul class="pricing-card__items">
+            <li>Diskon 15% dari harga normal</li>
+            <li>Surat-menyurat selesai dalam 30 hari</li>
+            <li>Bonus AC, water heater &amp; kanopi</li>
+            <li>Proses cepat tanpa bunga</li>
+          </ul>
+          <a href="#booking" class="btn btn--outline-primary btn--full">Pilih Skema Ini</a>
+        </div>
+
+        <!-- KPR (Featured) -->
+        <div class="pricing-card pricing-card--featured">
+          <div class="pricing-card__icon">🏦</div>
+          <div class="pricing-card__label">Paling Populer</div>
+          <div class="pricing-card__title">KPR</div>
+          <ul class="pricing-card__items">
+            <li>DP mulai 10% — Rp 85 jt untuk Type Anggrek</li>
+            <li>Tenor 5 hingga 25 tahun</li>
+            <li>9 bank partner: BCA, Mandiri, BRI, BNI, dll</li>
+            <li>Bunga mulai 3,99% fixed 3 tahun</li>
+          </ul>
+          <a href="#booking" class="btn btn--primary btn--full">Cek Simulasi KPR</a>
+        </div>
+
+        <!-- Cash Bertahap -->
+        <div class="pricing-card">
+          <div class="pricing-card__icon">📅</div>
+          <div class="pricing-card__label">Tanpa Bunga</div>
+          <div class="pricing-card__title">Cash Bertahap 24×</div>
+          <ul class="pricing-card__items">
+            <li>DP 30%, sisa cicil bertahap 24 bulan</li>
+            <li>Tanpa bunga, tanpa denda keterlambatan</li>
+            <li>Free finishing extra (granit upgrade)</li>
+            <li>Jadwal bayar fleksibel sesuai kebutuhan</li>
+          </ul>
+          <a href="#booking" class="btn btn--outline-primary btn--full">Pilih Skema Ini</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ 10 DEVELOPER PROFILE ══════ -->
+  <section class="developer" id="developer">
+    <div class="container">
+      <div class="developer__inner">
+
+        <div class="developer__text">
+          <span class="section-label">Developer</span>
+          <h2>Dibangun Oleh Yang Berpengalaman</h2>
+          <p>
+            Haventerra dikembangkan oleh PT Sentral Properti Indonesia — developer yang sudah
+            membangun 8 kawasan hunian sejak 2013. Zero delay handover, sertifikat tepat waktu,
+            dan after-sales yang selalu responsif.
+          </p>
+          <div class="developer__certs">
+            <span class="developer__cert">✓ REI Member</span>
+            <span class="developer__cert">✓ ISO 9001:2015</span>
+            <span class="developer__cert">✓ Green Building</span>
+            <span class="developer__cert">✓ Partner 9 Bank</span>
+          </div>
+        </div>
+
+        <div class="developer__stats">
+          <div class="developer__stat">
+            <div class="developer__stat-num">8</div>
+            <div class="developer__stat-label">Kawasan Hunian</div>
+          </div>
+          <div class="developer__stat">
+            <div class="developer__stat-num">12</div>
+            <div class="developer__stat-label">Tahun Pengalaman</div>
+          </div>
+          <div class="developer__stat">
+            <div class="developer__stat-num">4.500+</div>
+            <div class="developer__stat-label">Unit Terbangun</div>
+          </div>
+          <div class="developer__stat">
+            <div class="developer__stat-num">0</div>
+            <div class="developer__stat-label">Delay Handover</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ 11 TESTIMONIALS ══════ -->
+  <section class="testimonials" id="testimoni">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Testimoni</span>
+        <h2>Cerita Dari Penghuni Haventerra</h2>
+      </div>
+      <div class="testimonials__grid">
+
+        <div class="testimonial-card">
+          <div class="testimonial-card__quote">"</div>
+          <p class="testimonial-card__text">
+            Pindah ke Haventerra 2 tahun lalu. Anak-anak suka main di playground setiap sore,
+            kami berdua suka jogging tiap pagi. Lingkungannya tenang dan aman untuk keluarga.
+          </p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">
+              <img
+                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=80&h=80&q=80"
+                alt="Keluarga Anggara"
+              />
+            </div>
+            <div>
+              <div class="testimonial-card__name">Keluarga Anggara</div>
+              <div class="testimonial-card__role">Penghuni Type Melati sejak 2022</div>
+              <div class="testimonial-card__stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-card__quote">"</div>
+          <p class="testimonial-card__text">
+            Akses ke kantor di SCBD masih nyaman pakai KRL dari Rawa Buntu. Lingkungan tenang,
+            jauh dari macet kota, dan tetangga-tetangganya ramah semua. Pilihan terbaik!
+          </p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">
+              <img
+                src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=80&h=80&q=80"
+                alt="Ibu Rina Kusuma"
+              />
+            </div>
+            <div>
+              <div class="testimonial-card__name">Ibu Rina Kusuma</div>
+              <div class="testimonial-card__role">Marketing Manager · Type Cempaka</div>
+              <div class="testimonial-card__stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-card__quote">"</div>
+          <p class="testimonial-card__text">
+            Konstruksinya solid, sudah 3 tahun belum ada masalah berarti. After-sales sigap,
+            tim teknisi selalu responsif setiap kali ada yang perlu dibenahi.
+          </p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80"
+                alt="Pak Doni Hartanto"
+              />
+            </div>
+            <div>
+              <div class="testimonial-card__name">Pak Doni Hartanto</div>
+              <div class="testimonial-card__role">IT Consultant · Type Anyelir</div>
+              <div class="testimonial-card__stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ 12 FAQ ══════ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="faq__inner">
+        <div class="section-header">
+          <span class="section-label">FAQ</span>
+          <h2>Pertanyaan Umum</h2>
+        </div>
+        <div class="faq__items">
+
+          <div class="faq__item open">
+            <div class="faq__question">
+              <span class="faq__question-text">Berapa lama proses serah terima unit?</span>
+              <span class="faq__chevron">▾</span>
+            </div>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                <p>18–24 bulan dari tanda jadi, tergantung tipe yang dipilih. Kami berkomitmen untuk zero delay dengan pembaruan progres pembangunan tiap 2 minggu via WhatsApp.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <div class="faq__question">
+              <span class="faq__question-text">Apakah ada IPL bulanan?</span>
+              <span class="faq__chevron">▾</span>
+            </div>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                <p>IPL (Iuran Pengelolaan Lingkungan) berkisar Rp 200.000–350.000 per bulan tergantung tipe unit, mencakup biaya security, kebersihan, dan maintenance seluruh fasilitas bersama.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <div class="faq__question">
+              <span class="faq__question-text">Bisa booking unit secara online?</span>
+              <span class="faq__chevron">▾</span>
+            </div>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                <p>Bisa. NUP (Nomor Urut Pemesanan) refundable Rp 5 juta untuk hold unit selama 14 hari. Tersedia via form di bawah atau langsung ke marketing gallery kami di Serpong.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <div class="faq__question">
+              <span class="faq__question-text">Sertifikat apa yang didapat pembeli?</span>
+              <span class="faq__chevron">▾</span>
+            </div>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                <p>HGB (Hak Guna Bangunan) induk saat indent, yang dikonversi menjadi SHM (Sertifikat Hak Milik) setelah serah terima. Seluruh proses legal diurus oleh tim kami tanpa biaya tambahan.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <div class="faq__question">
+              <span class="faq__question-text">Bank apa saja yang menjadi partner KPR?</span>
+              <span class="faq__chevron">▾</span>
+            </div>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                <p>BCA, Bank Mandiri, BRI, BNI, BTN, CIMB Niaga, Bank Permata, Danamon, dan Maybank. Tim kami siap membantu simulasi dan memilihkan bank dengan bunga terbaik sesuai profil keuanganmu.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <div class="faq__question">
+              <span class="faq__question-text">Apakah kawasan aman dari banjir?</span>
+              <span class="faq__chevron">▾</span>
+            </div>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                <p>Haventerra berlokasi di elevasi 45 mdpl dan dilengkapi sistem drainase modern berkapasitas tinggi. Kawasan ini tidak pernah mengalami banjir sejak awal pembangunan dimulai.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ 13 BOOKING CTA ══════ -->
+  <section class="booking" id="booking">
+    <div class="container">
+      <div class="booking__inner">
+
+        <div class="booking__text">
+          <h2>Survey Lokasi,<br />Konsultasi Gratis</h2>
+          <p>
+            Tim marketing kami siap mendampingi survey lokasi &amp; konsultasi finansial.
+            Booking 1 hari sebelumnya untuk mendapatkan slot prioritas.
+          </p>
+        </div>
+
+        <div class="booking__form">
+          <div class="booking__form-title">Jadwalkan Kunjunganmu</div>
+          <form>
+            <div class="form__row">
+              <div class="form__group">
+                <label for="nama">Nama Lengkap</label>
+                <input id="nama" type="text" placeholder="Nama Anda" />
+              </div>
+              <div class="form__group">
+                <label for="wa">Nomor WhatsApp</label>
+                <input id="wa" type="tel" placeholder="+62 8xx xxxx xxxx" />
+              </div>
+            </div>
+            <div class="form__group">
+              <label for="tipe">Tipe Rumah Preferensi</label>
+              <select id="tipe">
+                <option value="">Pilih tipe rumah...</option>
+                <option>Type Anggrek — Rp 850 jt</option>
+                <option>Type Melati — Rp 1,2 M</option>
+                <option>Type Cempaka — Rp 1,6 M</option>
+                <option>Type Anyelir — Rp 2,5 M</option>
+                <option>Belum yakin, ingin konsultasi dulu</option>
+              </select>
+            </div>
+            <div class="form__row">
+              <div class="form__group">
+                <label for="tanggal">Jadwal Survey</label>
+                <input id="tanggal" type="date" />
+              </div>
+              <div class="form__group">
+                <label for="skema">Skema Pembayaran</label>
+                <select id="skema">
+                  <option value="">Pilih skema...</option>
+                  <option>KPR</option>
+                  <option>Cash Keras</option>
+                  <option>Cash Bertahap 24×</option>
+                  <option>Belum tahu</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn btn--white btn--lg btn--full" style="margin-top:4px;">
+              Jadwalkan Survey →
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ 14 FOOTER ══════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+
+        <div class="footer__brand">
+          <a href="/" class="navbar__logo">
+            <span class="logo-name">Haventerra</span>
+            <span class="logo-tag">Residence</span>
+          </a>
+          <p class="footer__brand-desc">
+            Hunian premium eco-living di Tangerang Selatan. 250 unit dalam 12 hektar kawasan hijau
+            yang asri dan strategis.
+          </p>
+          <p class="footer__address">
+            Marketing Gallery: Jl. Raya BSD No. 88,<br />
+            Serpong, Tangerang Selatan 15321<br />
+            Senin–Minggu, 08.00–17.00 WIB
+          </p>
+          <div class="footer__socials">
+            <a href="#" class="footer__social" aria-label="Instagram">📷</a>
+            <a href="#" class="footer__social" aria-label="YouTube">🎬</a>
+            <a href="#" class="footer__social" aria-label="TikTok">📱</a>
+            <a href="#" class="footer__social" aria-label="WhatsApp">💬</a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <div class="footer__col-title">Informasi</div>
+          <ul class="footer__col-links">
+            <li><a href="#tentang">Tentang Proyek</a></li>
+            <li><a href="#tipe">Tipe Rumah</a></li>
+            <li><a href="#fasilitas">Fasilitas</a></li>
+            <li><a href="#masterplan">Master Plan</a></li>
+            <li><a href="#galeri">Gallery</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <div class="footer__col-title">Pembelian</div>
+          <ul class="footer__col-links">
+            <li><a href="#harga">Harga &amp; Skema</a></li>
+            <li><a href="#booking">Booking Sekarang</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#developer">Developer</a></li>
+            <li><a href="#testimoni">Testimoni</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <div class="footer__col-title">Kontak</div>
+          <ul class="footer__col-links">
+            <li><a href="tel:+62215678910">+6221-5678910</a></li>
+            <li><a href="#">WhatsApp 24/7</a></li>
+            <li><a href="#">info@haventerra.id</a></li>
+            <li><a href="#">Jam Operasional</a></li>
+            <li><a href="#">Syarat &amp; Ketentuan</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__legal">© 2026 PT Sentral Properti Indonesia. Hak cipta dilindungi.</span>
+        <span class="footer__tagline">"Setiap rumah, setiap cerita."</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq__question').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq__item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // Gallery tab (visual only — full filter needs data-cat matching logic)
+    document.querySelectorAll('.gallery__tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.gallery__tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+
+    // Smooth navbar shrink on scroll
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      navbar.style.boxShadow = window.scrollY > 20
+        ? '0 2px 12px rgba(0,0,0,0.08)'
+        : 'none';
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
