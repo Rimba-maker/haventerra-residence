@@ -21,3 +21,6 @@ Thumbs.db
 *.ntvs*
 *.njsproj
 *.sln
+
+# Confidential/Local PRD
+72-developer-perumahan-PRD.md
