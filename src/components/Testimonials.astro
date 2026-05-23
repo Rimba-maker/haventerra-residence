@@ -1,0 +1,57 @@
+---
+import TestimonialCard from './TestimonialCard.astro';
+
+const testimonials = [
+  {
+    text: 'Pindah ke Haventerra 2 tahun lalu. Anak-anak suka main di playground setiap sore, kami berdua suka jogging tiap pagi. Lingkungannya tenang dan aman untuk keluarga.',
+    name: 'Keluarga Anggara',
+    role: 'Penghuni Type Melati sejak 2022',
+    avatar:
+      'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=80&h=80&q=80',
+  },
+  {
+    text: 'Akses ke kantor di SCBD masih nyaman pakai KRL dari Rawa Buntu. Lingkungan tenang, jauh dari macet kota, dan tetangga-tetangganya ramah semua. Pilihan terbaik!',
+    name: 'Ibu Rina Kusuma',
+    role: 'Marketing Manager · Type Cempaka',
+    avatar:
+      'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=80&h=80&q=80',
+  },
+  {
+    text: 'Konstruksinya solid, sudah 3 tahun belum ada masalah berarti. After-sales sigap, tim teknisi selalu responsif setiap kali ada yang perlu dibenahi.',
+    name: 'Pak Doni Hartanto',
+    role: 'IT Consultant · Type Anyelir',
+    avatar:
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80',
+  },
+];
+---
+
+<section class="testimonials" id="testimoni">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Testimoni</span>
+      <h2>Cerita Dari Penghuni Haventerra</h2>
+    </div>
+    <div class="testimonials__grid">
+      {testimonials.map((t) => <TestimonialCard {...t} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    background: var(--color-canvas);
+    padding: var(--section-py) 0;
+  }
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .testimonials__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

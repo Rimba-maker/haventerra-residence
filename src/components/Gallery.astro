@@ -1,0 +1,165 @@
+---
+const galleryItems = [
+  {
+    cat: 'living',
+    image:
+      'https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=700&q=80',
+    alt: 'Living room show unit Type Melati',
+    caption: 'Type Melati — Living Room',
+  },
+  {
+    cat: 'dapur',
+    image:
+      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=700&q=80',
+    alt: 'Dapur modern Type Cempaka',
+    caption: 'Type Cempaka — Dapur',
+  },
+  {
+    cat: 'eksterior',
+    image:
+      'https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?auto=format&fit=crop&w=700&q=80',
+    alt: 'Eksterior Type Anyelir',
+    caption: 'Type Anyelir — Eksterior',
+    tall: true,
+  },
+  {
+    cat: 'kamar',
+    image:
+      'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=700&q=80',
+    alt: 'Master bedroom Type Anyelir',
+    caption: 'Type Anyelir — Master Bedroom',
+  },
+  {
+    cat: 'taman',
+    image:
+      'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=700&q=80',
+    alt: 'Taman belakang Type Anyelir',
+    caption: 'Type Anyelir — Taman Belakang',
+  },
+];
+---
+
+<section class="gallery" id="galeri">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Show Unit</span>
+      <h2>Lihat Detail Setiap Sudut</h2>
+      <p>Kunjungi show unit kami atau jelajahi foto-foto di bawah ini.</p>
+    </div>
+    <div class="gallery__tabs">
+      <button class="gallery__tab active" data-filter="all">Semua</button>
+      <button class="gallery__tab" data-filter="eksterior">Eksterior</button>
+      <button class="gallery__tab" data-filter="living">Living Room</button>
+      <button class="gallery__tab" data-filter="dapur">Dapur</button>
+      <button class="gallery__tab" data-filter="kamar">Kamar Tidur</button>
+      <button class="gallery__tab" data-filter="taman">Taman</button>
+    </div>
+    <div class="gallery__grid">
+      {
+        galleryItems.map((item) => (
+          <div
+            class={`gallery__item ${item.tall ? 'gallery__item--tall' : ''}`}
+            data-cat={item.cat}
+          >
+            <img src={item.image} alt={item.alt} />
+            <div class="gallery__caption">{item.caption}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery {
+    background: var(--color-canvas);
+    padding: var(--section-py) 0;
+  }
+  .gallery__tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .gallery__tab {
+    padding: 8px 20px;
+    border-radius: var(--rounded-full);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1.5px solid var(--color-hairline);
+    background: #fff;
+    color: var(--color-body);
+    transition: all 0.15s ease;
+  }
+  .gallery__tab.active,
+  .gallery__tab:hover {
+    background: var(--color-ink);
+    color: #fff;
+    border-color: var(--color-ink);
+  }
+  .gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 260px;
+    gap: 12px;
+  }
+  .gallery__item {
+    border-radius: var(--rounded-sm);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  .gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .gallery__item:hover img {
+    transform: scale(1.05);
+  }
+  .gallery__item--tall {
+    grid-row: span 2;
+  }
+  .gallery__caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 14px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.72), transparent);
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.92);
+    opacity: 0;
+    transition: opacity 0.22s ease;
+  }
+  .gallery__item:hover .gallery__caption {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .gallery__grid {
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: 200px;
+    }
+    .gallery__item--tall {
+      grid-row: auto;
+    }
+  }
+</style>
+
+<script>
+  // Gallery tab (visual only — full filter needs data-cat matching logic)
+  document.querySelectorAll('.gallery__tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      document
+        .querySelectorAll('.gallery__tab')
+        .forEach((t) => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+</script>

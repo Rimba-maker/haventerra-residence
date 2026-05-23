@@ -1,0 +1,85 @@
+---
+interface Props {
+  title: string;
+  label: string;
+  icon: string;
+  featured?: boolean;
+  items: string[];
+}
+
+const { title, label, icon, featured, items } = Astro.props;
+---
+
+<div class={`pricing-card ${featured ? 'pricing-card--featured' : ''}`}>
+  <div class="pricing-card__icon">{icon}</div>
+  <div class="pricing-card__label">{label}</div>
+  <div class="pricing-card__title">{title}</div>
+  <ul class="pricing-card__items">
+    {items.map((item) => <li>{item}</li>)}
+  </ul>
+  <a href="#booking" class="btn btn--outline-primary btn--full">
+    {featured ? 'Cek Simulasi KPR' : 'Pilih Skema Ini'}
+  </a>
+</div>
+
+<style>
+  .pricing-card {
+    padding: 28px;
+    border: 1.5px solid var(--color-hairline);
+    border-radius: var(--rounded-md);
+    background: var(--color-canvas);
+  }
+  .pricing-card--featured {
+    border-color: var(--color-primary);
+    box-shadow:
+      0 0 0 1px var(--color-primary),
+      var(--shadow-card);
+    transform: scale(1.025);
+  }
+  .pricing-card__icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+  .pricing-card__label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+  .pricing-card__title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-ink);
+    margin-bottom: 20px;
+  }
+  .pricing-card__items {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-bottom: 26px;
+  }
+  .pricing-card__items li {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 14px;
+    color: var(--color-body);
+    line-height: 1.45;
+  }
+  .pricing-card__items li::before {
+    content: '✓';
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-primary);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .pricing-card--featured {
+      transform: none;
+    }
+  }
+</style>

@@ -1,0 +1,85 @@
+---
+
+---
+
+<section class="masterplan" id="masterplan">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Site Plan</span>
+      <h2>Master Plan Kawasan</h2>
+      <p>
+        Zoning yang jelas — tidak ada satu rumah pun yang berbatasan langsung
+        dengan jalan utama.
+      </p>
+    </div>
+    <div class="masterplan__visual">
+      <img
+        src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1600&q=80"
+        alt="Master plan kawasan Haventerra Residence Tangerang Selatan"
+      />
+      <div class="masterplan__overlay"></div>
+      <div class="masterplan__legend">
+        <span class="legend-item">🏠 Hunian</span>
+        <span class="legend-item">🌳 Ruang Hijau 30%</span>
+        <span class="legend-item">🏊 Clubhouse & Pool</span>
+        <span class="legend-item">🎮 Children Park</span>
+        <span class="legend-item">🛒 Area Komersial</span>
+        <span class="legend-item">🛡️ Security Post</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .masterplan {
+    background: var(--color-warm-cream);
+    padding: var(--section-py) 0;
+  }
+  .masterplan__visual {
+    position: relative;
+    border-radius: var(--rounded-lg);
+    overflow: hidden;
+    aspect-ratio: 16 / 7;
+    margin-top: 0;
+  }
+  .masterplan__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .masterplan__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(8, 18, 12, 0.5) 0%,
+      transparent 60%
+    );
+  }
+  .masterplan__legend {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 13px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(6px);
+    border-radius: var(--rounded-full);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  @media (max-width: 768px) {
+    .masterplan__visual {
+      aspect-ratio: 4 / 3;
+    }
+  }
+</style>

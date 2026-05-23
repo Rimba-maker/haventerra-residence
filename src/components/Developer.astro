@@ -1,0 +1,113 @@
+---
+
+---
+
+<section class="developer" id="developer">
+  <div class="container">
+    <div class="developer__inner">
+      <div class="developer__text">
+        <span class="section-label">Developer</span>
+        <h2>Dibangun Oleh Yang Berpengalaman</h2>
+        <p>
+          Haventerra dikembangkan oleh PT Sentral Properti Indonesia — developer
+          yang sudah membangun 8 kawasan hunian sejak 2013. Zero delay handover,
+          sertifikat tepat waktu, dan after-sales yang selalu responsif.
+        </p>
+        <div class="developer__certs">
+          <span class="developer__cert">✓ REI Member</span>
+          <span class="developer__cert">✓ ISO 9001:2015</span>
+          <span class="developer__cert">✓ Green Building</span>
+          <span class="developer__cert">✓ Partner 9 Bank</span>
+        </div>
+      </div>
+
+      <div class="developer__stats">
+        <div class="developer__stat">
+          <div class="developer__stat-num">8</div>
+          <div class="developer__stat-label">Kawasan Hunian</div>
+        </div>
+        <div class="developer__stat">
+          <div class="developer__stat-num">12</div>
+          <div class="developer__stat-label">Tahun Pengalaman</div>
+        </div>
+        <div class="developer__stat">
+          <div class="developer__stat-num">4.500+</div>
+          <div class="developer__stat-label">Unit Terbangun</div>
+        </div>
+        <div class="developer__stat">
+          <div class="developer__stat-num">0</div>
+          <div class="developer__stat-label">Delay Handover</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .developer {
+    background: var(--color-dark-band);
+    padding: var(--section-py) 0;
+  }
+  .developer__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .developer__text .section-label {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .developer__text h2 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 18px;
+    line-height: 1.18;
+  }
+  .developer__text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.68);
+    margin-bottom: 28px;
+  }
+  .developer__certs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .developer__cert {
+    padding: 7px 15px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--rounded-full);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.78);
+    font-weight: 500;
+  }
+  .developer__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 48px;
+  }
+  .developer__stat-num {
+    font-family: var(--font-display);
+    font-size: 56px;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .developer__stat-label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .developer__inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+</style>

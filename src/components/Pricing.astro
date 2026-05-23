@@ -1,0 +1,94 @@
+---
+import PricingCard from './PricingCard.astro';
+
+const plans = [
+  {
+    title: 'Cash Keras',
+    label: 'Hemat Terbanyak',
+    icon: '💰',
+    items: [
+      'Diskon 15% dari harga normal',
+      'Surat-menyurat selesai dalam 30 hari',
+      'Bonus AC, water heater & kanopi',
+      'Proses cepat tanpa bunga',
+    ],
+  },
+  {
+    title: 'KPR',
+    label: 'Paling Populer',
+    icon: '🏦',
+    featured: true,
+    items: [
+      'DP mulai 10% — Rp 85 jt untuk Type Anggrek',
+      'Tenor 5 hingga 25 tahun',
+      '9 bank partner: BCA, Mandiri, BRI, BNI, dll',
+      'Bunga mulai 3,99% fixed 3 tahun',
+    ],
+  },
+  {
+    title: 'Cash Bertahap 24×',
+    label: 'Tanpa Bunga',
+    icon: '📅',
+    items: [
+      'DP 30%, sisa cicil bertahap 24 bulan',
+      'Tanpa bunga, tanpa denda keterlambatan',
+      'Free finishing extra (granit upgrade)',
+      'Jadwal bayar fleksibel sesuai kebutuhan',
+    ],
+  },
+];
+---
+
+<section class="pricing" id="harga">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Pembayaran</span>
+      <h2>Skema Pembayaran Fleksibel</h2>
+      <p>Pilih skema yang paling sesuai dengan kondisi keuanganmu.</p>
+    </div>
+    <div class="pricing__promo-banner">
+      <div class="pricing__promo">
+        🎉 Promo Grand Opening: Free BPHTB & AJB sampai 31 Desember 2026!
+      </div>
+    </div>
+    <div class="pricing__grid">
+      {plans.map((plan) => <PricingCard {...plan} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing {
+    background: var(--color-warm-cream);
+    padding: var(--section-py) 0;
+  }
+  .pricing__promo-banner {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 44px;
+  }
+  .pricing__promo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    background: var(--color-accent-light);
+    border: 1.5px solid var(--color-accent);
+    border-radius: var(--rounded-full);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+  .pricing__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .pricing__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,189 @@
+---
+
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="/" class="navbar__logo">
+          <span class="logo-name">Haventerra</span>
+          <span class="logo-tag">Residence</span>
+        </a>
+        <p class="footer__brand-desc">
+          Hunian premium eco-living di Tangerang Selatan. 250 unit dalam 12
+          hektar kawasan hijau yang asri dan strategis.
+        </p>
+        <p class="footer__address">
+          Marketing Gallery: Jl. Raya BSD No. 88,<br />
+          Serpong, Tangerang Selatan 15321<br />
+          Senin–Minggu, 08.00–17.00 WIB
+        </p>
+        <div class="footer__socials">
+          <a href="#" class="footer__social" aria-label="Instagram">📷</a>
+          <a href="#" class="footer__social" aria-label="YouTube">🎬</a>
+          <a href="#" class="footer__social" aria-label="TikTok">📱</a>
+          <a href="#" class="footer__social" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Informasi</div>
+        <ul class="footer__col-links">
+          <li><a href="#tentang">Tentang Proyek</a></li>
+          <li><a href="#tipe">Tipe Rumah</a></li>
+          <li><a href="#fasilitas">Fasilitas</a></li>
+          <li><a href="#masterplan">Master Plan</a></li>
+          <li><a href="#galeri">Gallery</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Pembelian</div>
+        <ul class="footer__col-links">
+          <li><a href="#harga">Harga & Skema</a></li>
+          <li><a href="#booking">Booking Sekarang</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#developer">Developer</a></li>
+          <li><a href="#testimoni">Testimoni</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Kontak</div>
+        <ul class="footer__col-links">
+          <li><a href="tel:+62215678910">+6221-5678910</a></li>
+          <li><a href="#">WhatsApp 24/7</a></li>
+          <li><a href="#">info@haventerra.id</a></li>
+          <li><a href="#">Jam Operasional</a></li>
+          <li><a href="#">Syarat & Ketentuan</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__legal"
+        >© 2026 PT Sentral Properti Indonesia. Hak cipta dilindungi.</span
+      >
+      <span class="footer__tagline">"Setiap rumah, setiap cerita."</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-warm-cream);
+    padding: 60px 0 0;
+  }
+  .footer__top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--color-hairline);
+  }
+  .footer__brand-desc {
+    font-size: 14px;
+    color: var(--color-muted);
+    line-height: 1.65;
+    margin-top: 14px;
+    margin-bottom: 22px;
+  }
+  .footer__address {
+    font-size: 13px;
+    color: var(--color-muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .footer__socials {
+    display: flex;
+    gap: 10px;
+  }
+  .footer__social {
+    width: 36px;
+    height: 36px;
+    background: var(--color-surface-soft);
+    border-radius: var(--rounded-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    transition: background 0.15s ease;
+  }
+  .footer__social:hover {
+    background: var(--color-primary-light);
+  }
+  .footer__col-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-ink);
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+  }
+  .footer__col-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer__col-links a {
+    font-size: 14px;
+    color: var(--color-muted);
+    transition: color 0.15s ease;
+  }
+  .footer__col-links a:hover {
+    color: var(--color-ink);
+  }
+  .footer__bottom {
+    padding: 22px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .footer__legal {
+    font-size: 13px;
+    color: var(--color-muted);
+  }
+  .footer__tagline {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--color-muted);
+  }
+
+  @media (max-width: 1100px) {
+    .footer__top {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer__top {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .footer__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .navbar__logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .logo-name {
+    font-family: var(--font-display);
+    font-size: 21px;
+    color: var(--color-ink);
+    letter-spacing: -0.3px;
+  }
+  .logo-tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-top: 2px;
+  }
+</style>

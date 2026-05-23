@@ -1,0 +1,227 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Haventerra Residence — Perumahan Premium Tangerang Selatan',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style is:global>
+      /* ─── HAVENTERRA DESIGN TOKENS ───────────────────────────────────────────
+       DNA: Airbnb (photo-first, trust signals, soft rounding, white canvas)
+       Adaptation: Forest Sage primary, warm cream alternates, DM Serif hero
+    ──────────────────────────────────────────────────────────────────────── */
+      :root {
+        --color-primary: #3d6b52;
+        --color-primary-hover: #2d5340;
+        --color-primary-light: #d4e8db;
+        --color-accent: #c8763a;
+        --color-accent-light: #fdf0e6;
+        --color-canvas: #ffffff;
+        --color-warm-cream: #faf8f4;
+        --color-surface-soft: #f2efe9;
+        --color-ink: #1a1a1a;
+        --color-body: #3d3d3d;
+        --color-muted: #6a6a6a;
+        --color-hairline: #e0dbd4;
+        --color-dark-band: #1e3428;
+
+        --font-display: 'DM Serif Display', Georgia, serif;
+        --font-body: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+
+        --rounded-xs: 4px;
+        --rounded-sm: 8px;
+        --rounded-md: 14px;
+        --rounded-lg: 20px;
+        --rounded-xl: 32px;
+        --rounded-full: 9999px;
+
+        --shadow-card:
+          rgba(0, 0, 0, 0.02) 0 0 0 1px, rgba(0, 0, 0, 0.04) 0 2px 8px,
+          rgba(0, 0, 0, 0.06) 0 4px 16px;
+        --shadow-card-hover:
+          rgba(0, 0, 0, 0.02) 0 0 0 1px, rgba(0, 0, 0, 0.08) 0 6px 20px,
+          rgba(0, 0, 0, 0.1) 0 12px 32px;
+
+        --section-py: 88px;
+        --container-max: 1280px;
+        --container-px: 80px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font-body);
+        background: var(--color-canvas);
+        color: var(--color-body);
+        font-size: 16px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+      }
+
+      .container {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding-left: var(--container-px);
+        padding-right: var(--container-px);
+      }
+
+      /* ─── BUTTONS ─── */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 13px 26px;
+        font-family: var(--font-body);
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 1.2;
+        border-radius: var(--rounded-sm);
+        border: 1.5px solid transparent;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+      }
+      .btn--primary {
+        background: var(--color-primary);
+        color: #fff;
+        border-color: var(--color-primary);
+      }
+      .btn--primary:hover {
+        background: var(--color-primary-hover);
+        border-color: var(--color-primary-hover);
+      }
+      .btn--white {
+        background: #fff;
+        color: var(--color-ink);
+      }
+      .btn--white:hover {
+        background: var(--color-surface-soft);
+      }
+      .btn--outline {
+        background: transparent;
+        color: var(--color-ink);
+        border-color: var(--color-ink);
+      }
+      .btn--outline:hover {
+        background: var(--color-ink);
+        color: #fff;
+      }
+      .btn--outline-primary {
+        background: transparent;
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+      }
+      .btn--outline-primary:hover {
+        background: var(--color-primary);
+        color: #fff;
+      }
+      .btn--ghost-white {
+        background: rgba(255, 255, 255, 0.14);
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.45);
+        backdrop-filter: blur(6px);
+      }
+      .btn--ghost-white:hover {
+        background: rgba(255, 255, 255, 0.24);
+      }
+      .btn--lg {
+        padding: 16px 34px;
+        font-size: 16px;
+      }
+      .btn--pill {
+        border-radius: var(--rounded-full);
+      }
+      .btn--full {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* ─── SECTION LABEL ─── */
+      .section-label {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-primary);
+        margin-bottom: 12px;
+      }
+
+      /* ──────────────────────────────────────────────────────────────
+       RESPONSIVE
+    ────────────────────────────────────────────────────────────── */
+      @media (max-width: 1100px) {
+        :root {
+          --container-px: 48px;
+        }
+        .footer__top {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        :root {
+          --container-px: 24px;
+          --section-py: 60px;
+        }
+        .navbar__links {
+          display: none;
+        }
+        .footer__top {
+          grid-template-columns: 1fr 1fr;
+          gap: 32px;
+        }
+        .footer__bottom {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

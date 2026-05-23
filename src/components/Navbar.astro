@@ -1,0 +1,93 @@
+---
+
+---
+
+<nav class="navbar">
+  <div class="container navbar__inner">
+    <a href="/" class="navbar__logo">
+      <span class="logo-name">Haventerra</span>
+      <span class="logo-tag">Residence</span>
+    </a>
+    <ul class="navbar__links">
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#tipe">Tipe Rumah</a></li>
+      <li><a href="#masterplan">Master Plan</a></li>
+      <li><a href="#lokasi">Lokasi</a></li>
+      <li><a href="#harga">Harga</a></li>
+    </ul>
+    <a href="#booking" class="btn btn--primary btn--pill">Konsultasi Gratis</a>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-canvas);
+    border-bottom: 1px solid var(--color-hairline);
+    height: 72px;
+    display: flex;
+    align-items: center;
+  }
+  .navbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .navbar__logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .logo-name {
+    font-family: var(--font-display);
+    font-size: 21px;
+    color: var(--color-ink);
+    letter-spacing: -0.3px;
+  }
+  .logo-tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-top: 2px;
+  }
+  .navbar__links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .navbar__links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-body);
+    transition: color 0.15s ease;
+  }
+  .navbar__links a:hover {
+    color: var(--color-ink);
+  }
+
+  @media (max-width: 768px) {
+    .navbar__links {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Smooth navbar shrink on scroll
+  const navbar = document.querySelector('.navbar') as HTMLElement;
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (navbar) {
+        navbar.style.boxShadow =
+          window.scrollY > 20 ? '0 2px 12px rgba(0,0,0,0.08)' : 'none';
+      }
+    },
+    { passive: true }
+  );
+</script>

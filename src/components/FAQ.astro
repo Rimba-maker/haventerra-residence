@@ -1,0 +1,194 @@
+---
+
+---
+
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq__inner">
+      <div class="section-header">
+        <span class="section-label">FAQ</span>
+        <h2>Pertanyaan Umum</h2>
+      </div>
+      <div class="faq__items">
+        <div class="faq__item open">
+          <div class="faq__question">
+            <span class="faq__question-text"
+              >Berapa lama proses serah terima unit?</span
+            >
+            <span class="faq__chevron">▾</span>
+          </div>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              <p>
+                18–24 bulan dari tanda jadi, tergantung tipe yang dipilih. Kami
+                berkomitmen untuk zero delay dengan pembaruan progres
+                pembangunan tiap 2 minggu via WhatsApp.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <div class="faq__question">
+            <span class="faq__question-text">Apakah ada IPL bulanan?</span>
+            <span class="faq__chevron">▾</span>
+          </div>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              <p>
+                IPL (Iuran Pengelolaan Lingkungan) berkisar Rp 200.000–350.000
+                per bulan tergantung tipe unit, mencakup biaya security,
+                kebersihan, dan maintenance seluruh fasilitas bersama.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <div class="faq__question">
+            <span class="faq__question-text"
+              >Bisa booking unit secara online?</span
+            >
+            <span class="faq__chevron">▾</span>
+          </div>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              <p>
+                Bisa. NUP (Nomor Urut Pemesanan) refundable Rp 5 juta untuk hold
+                unit selama 14 hari. Tersedia via form di bawah atau langsung ke
+                marketing gallery kami di Serpong.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <div class="faq__question">
+            <span class="faq__question-text"
+              >Sertifikat apa yang didapat pembeli?</span
+            >
+            <span class="faq__chevron">▾</span>
+          </div>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              <p>
+                HGB (Hak Guna Bangunan) induk saat indent, yang dikonversi
+                menjadi SHM (Sertifikat Hak Milik) setelah serah terima. Seluruh
+                proses legal diurus oleh tim kami tanpa biaya tambahan.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <div class="faq__question">
+            <span class="faq__question-text"
+              >Bank apa saja yang menjadi partner KPR?</span
+            >
+            <span class="faq__chevron">▾</span>
+          </div>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              <p>
+                BCA, Bank Mandiri, BRI, BNI, BTN, CIMB Niaga, Bank Permata,
+                Danamon, dan Maybank. Tim kami siap membantu simulasi dan
+                memilihkan bank dengan bunga terbaik sesuai profil keuanganmu.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <div class="faq__question">
+            <span class="faq__question-text"
+              >Apakah kawasan aman dari banjir?</span
+            >
+            <span class="faq__chevron">▾</span>
+          </div>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              <p>
+                Haventerra berlokasi di elevasi 45 mdpl dan dilengkapi sistem
+                drainase modern berkapasitas tinggi. Kawasan ini tidak pernah
+                mengalami banjir sejak awal pembangunan dimulai.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    background: var(--color-warm-cream);
+    padding: var(--section-py) 0;
+  }
+  .faq__inner {
+    max-width: 740px;
+    margin: 0 auto;
+  }
+  .faq__items {
+    border-top: 1px solid var(--color-hairline);
+  }
+  .faq__item {
+    border-bottom: 1px solid var(--color-hairline);
+  }
+  .faq__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    cursor: pointer;
+    gap: 16px;
+    user-select: none;
+  }
+  .faq__question-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+  .faq__chevron {
+    font-size: 20px;
+    color: var(--color-muted);
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+    line-height: 1;
+  }
+  .faq__answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+  }
+  .faq__answer-inner {
+    overflow: hidden;
+  }
+  .faq__answer p {
+    font-size: 15px;
+    line-height: 1.72;
+    color: var(--color-body);
+    padding-bottom: 20px;
+  }
+  .faq__item.open .faq__chevron {
+    transform: rotate(180deg);
+  }
+  .faq__item.open .faq__answer {
+    grid-template-rows: 1fr;
+  }
+</style>
+
+<script>
+  // FAQ Accordion
+  document.querySelectorAll('.faq__question').forEach((q) => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      if (!item) return;
+      const isOpen = item.classList.contains('open');
+      document
+        .querySelectorAll('.faq__item')
+        .forEach((i) => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>

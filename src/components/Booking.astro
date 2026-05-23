@@ -1,0 +1,163 @@
+---
+
+---
+
+<section class="booking" id="booking">
+  <div class="container">
+    <div class="booking__inner">
+      <div class="booking__text">
+        <h2>Survey Lokasi,<br />Konsultasi Gratis</h2>
+        <p>
+          Tim marketing kami siap mendampingi survey lokasi & konsultasi
+          finansial. Booking 1 hari sebelumnya untuk mendapatkan slot prioritas.
+        </p>
+      </div>
+
+      <div class="booking__form">
+        <div class="booking__form-title">Jadwalkan Kunjunganmu</div>
+        <form action="#" method="POST">
+          <div class="form__row">
+            <div class="form__group">
+              <label for="nama">Nama Lengkap</label>
+              <input
+                id="nama"
+                name="nama"
+                type="text"
+                placeholder="Nama Anda"
+                required
+              />
+            </div>
+            <div class="form__group">
+              <label for="wa">Nomor WhatsApp</label>
+              <input
+                id="wa"
+                name="wa"
+                type="tel"
+                placeholder="+62 8xx xxxx xxxx"
+                required
+              />
+            </div>
+          </div>
+          <div class="form__group">
+            <label for="tipe_pref">Tipe Rumah Preferensi</label>
+            <select id="tipe_pref" name="tipe_pref">
+              <option value="">Pilih tipe rumah...</option>
+              <option>Type Anggrek — Rp 850 jt</option>
+              <option>Type Melati — Rp 1,2 M</option>
+              <option>Type Cempaka — Rp 1,6 M</option>
+              <option>Type Anyelir — Rp 2,5 M</option>
+              <option>Belum yakin, ingin konsultasi dulu</option>
+            </select>
+          </div>
+          <div class="form__row">
+            <div class="form__group">
+              <label for="tanggal">Jadwal Survey</label>
+              <input id="tanggal" name="tanggal" type="date" required />
+            </div>
+            <div class="form__group">
+              <label for="skema">Skema Pembayaran</label>
+              <select id="skema" name="skema">
+                <option value="">Pilih skema...</option>
+                <option>KPR</option>
+                <option>Cash Keras</option>
+                <option>Cash Bertahap 24×</option>
+                <option>Belum tahu</option>
+              </select>
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="btn btn--white btn--lg btn--full"
+            style="margin-top:4px;"
+          >
+            Jadwalkan Survey →
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .booking {
+    background: var(--color-primary);
+    padding: var(--section-py) 0;
+  }
+  .booking__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .booking__text h2 {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 3.2vw, 46px);
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  .booking__text p {
+    font-size: 16px;
+    line-height: 1.72;
+    color: rgba(255, 255, 255, 0.78);
+  }
+  .booking__form {
+    background: #fff;
+    border-radius: var(--rounded-lg);
+    padding: 36px;
+  }
+  .booking__form-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-ink);
+    margin-bottom: 24px;
+  }
+  .form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .form__group label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-ink);
+    letter-spacing: 0.02em;
+  }
+  .form__group input,
+  .form__group select {
+    padding: 12px 14px;
+    border: 1.5px solid var(--color-hairline);
+    border-radius: var(--rounded-sm);
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--color-ink);
+    background: var(--color-canvas);
+    transition: border-color 0.15s ease;
+    outline: none;
+    appearance: none;
+  }
+  .form__group input:focus,
+  .form__group select:focus {
+    border-color: var(--color-primary);
+  }
+  .form__group input::placeholder {
+    color: var(--color-muted);
+  }
+
+  @media (max-width: 768px) {
+    .booking__inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .form__row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

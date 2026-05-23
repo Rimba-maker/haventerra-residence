@@ -1,0 +1,96 @@
+---
+import TypeCard from './TypeCard.astro';
+
+const types = [
+  {
+    name: 'Type Anggrek',
+    specs: '60 m² tanah · 36 m² bangunan<br />2 KT · 1 KM · Carport 1 mobil',
+    price: 'Rp 850 jt',
+    units: '105 unit',
+    image:
+      'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    name: 'Type Melati',
+    specs:
+      '72 m² tanah · 45 m² bangunan<br />2 KT + study · 2 KM · Carport 1 mobil',
+    price: 'Rp 1,2 M',
+    units: '80 unit',
+    image:
+      'https://images.unsplash.com/photo-1576941089067-2de3c901e126?auto=format&fit=crop&w=600&q=80',
+    badge: '⭐ Best Seller',
+  },
+  {
+    name: 'Type Cempaka',
+    specs:
+      '90 m² tanah · 60 m² bangunan<br />3 KT · 2 KM · Ruang kerja · Carport 2 mobil',
+    price: 'Rp 1,6 M',
+    units: '45 unit',
+    image:
+      'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    name: 'Type Anyelir',
+    specs:
+      '120 m² tanah · 90 m² bangunan<br />3 KT + master suite · 3 KM · Taman belakang',
+    price: 'Rp 2,5 M',
+    units: '20 unit',
+    image:
+      'https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?auto=format&fit=crop&w=600&q=80',
+  },
+];
+---
+
+<section class="types" id="tipe">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Tipe Rumah</span>
+      <h2>Pilih Tipe Yang Cocok</h2>
+      <p>
+        4 tipe rumah, semua dengan kualitas konstruksi & finishing yang sama.
+      </p>
+    </div>
+    <div class="types__grid">
+      {types.map((type) => <TypeCard {...type} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .types {
+    background: var(--color-canvas);
+    padding: var(--section-py) 0;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+  .section-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 400;
+    color: var(--color-ink);
+    margin-bottom: 10px;
+  }
+  .section-header p {
+    font-size: 16px;
+    color: var(--color-muted);
+  }
+  .types__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 1100px) {
+    .types__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .types__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
